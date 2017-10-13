@@ -1,0 +1,234 @@
+%------------------------------------
+% Vlaho Thesis 
+% XeLaTeX Template
+% Original author: Danielle Vlaho
+% https://github.com/deevlaho/thesis_template
+% Copyright 2017
+%------------------------------------
+
+
+\documentclass[12pt,letterpaper,twoside,openright]{report}
+\raggedbottom
+
+\title{Title}
+\author{Author}
+\date{Day Month Year}
+
+%general commands for document setup and basic packages
+\usepackage{graphicx}
+\graphicspath{{specify}} 															% need to specify path
+\usepackage[width=.9\textwidth]{caption}							% width of caption compared to width of page text
+\usepackage{subcaption}														% allows subcaptioning of subfigures within figures
+\usepackage[width=150mm,top=25mm,bottom=25mm, bindingoffset=12mm, headheight=15pt]{geometry}	%page setup
+\usepackage{amsmath, amsthm, amssymb, mathtools}	% various enhancements for documents containing mathematical formulae and equations
+\usepackage{gensymb}															% provides generic symbols
+\usepackage{mhchem}															% typesets chemical formulae and equations with proper subscripts
+\usepackage{chemscheme}														% adds a "scheme" float type and allows automatic numbering of compounds within the scheme
+\usepackage{siunitx}																% processes SI values with correct formatting and unit symbols
+
+%define commands for special characters (especially useful for NMR characterization)
+\newcommand{\pKa}{p\textit{K}\textsubscript{a} }
+\newcommand{\pnmr}{\textsuperscript{31}P NMR }
+\newcommand{\hnmr}{\textsuperscript{1}H NMR }
+\newcommand{\cnmr}{\textsuperscript{13}C NMR }
+\newcommand{\fnmr}{\textsuperscript{19}F NMR }
+\newcommand{\hshift}{$\delta$\textsubscript{H} }
+\newcommand{\cshift}{$\delta$\textsubscript{C} }
+\newcommand{\pshift}{$\delta$\textsubscript{P} }
+\newcommand{\rf}{R\textsubscript{f} }
+
+%define special packages for tables and other components
+\usepackage{longtable}															% allows multipage tables (used in list of abbrevs)
+\usepackage{adjustbox}															%  macros to adjust boxed content
+\usepackage{multirow}															% allows tables where data is merged onto multiple row
+\usepackage{textcomp}															% support to text companion fonts
+\usepackage{datetime}															% formatting for dates, allows use of \today
+\usepackage{listings}																% allows typesetting of programming code
+\usepackage{verbatim,moreverb}											% allows typesetting of verbatim input 
+\usepackage[titles]{tocloft}													% provides control over typography of TOC 
+
+%define font colours
+\usepackage{xcolor}
+% here you can define specific colours to be called in the text eg \definecolor{darkestblue}{HTML}{0336AC}
+% you can also define commands to use those colours eg \newcommand{\refhere}{\textcolor{hotpink}{\textbf{[NEED REF] }}}
+
+%declare allowed hyphenation points - this will tell latex where it can hyphenate words it doesn't recognize; especially important to allow latex to hyphenate words that already contain hyphens
+\hyphenation{di-methyl-ethyl-ene-di-amine}
+
+%set page styles
+\usepackage{fancyhdr}															% for use of headers and footers
+\pagestyle{fancy}																	% to incorporate the set headers and footers
+%reset all of these as you choose. E - even; O - odd; L - left; C - center; R - right; H - header; F - footer  
+\fancyhead{}
+\fancyhead[RO,LE]{Section \thesection}	
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{Chapter \thechapter}
+\fancyfoot[CO,CE]{Author}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{afterpage}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \newpage}
+\usepackage{setspace}   
+\usepackage{lipsum}
+\linespread{1.5}																		% McGill guidelines: must be spaced at least 1.5, but you can do more
+%\setlength{\parskip}{1em}
+
+%set indents for TOC items
+\cftsetindents{section}{0em}{1.5em}
+\cftsetindents{section}{1.5em}{3.0em}
+\cftsetindents{subsection}{4.5em}{3.5em}
+\cftsetindents{table}{1.5em}{3.0em}
+\cftsetindents{figure}{1.5em}{3.0em}
+%\setlength{\cftchapternumwidth}{20mm}
+%\setlength{\cftsectionnumwidth}{20mm}
+%\setlength{\cftfigurenumwidth}{20mm}
+%\setlength{\cfttablenumwidth}{20mm}
+
+%import bibliography, subfiles, links
+\usepackage[style=chem-acs, autocite=superscript, backend=bibtex]{biblatex}
+\usepackage{notoccite}															% to remove problems stemming from citations occuring within TOC items 
+\bibliography{/x/x/x/bibliography.bib}									% specify your path
+\AtEveryBibitem{\clearfield{month}}										% removes month from bibliography items
+%\usepackage{commands}
+\usepackage{hyperref}															% produces hypertext links in document
+\usepackage{subfiles}																% allows incorporation of subfiles
+\makeatletter
+\renewcommand{\@dotsep}{2.0}											% settings for TOC items
+\renewcommand{\@pnumwidth}{2em}									% settings for TOC items
+\renewcommand{\@tocrmarg}{5em}										% settings for TOC items
+\makeatother
+\hypersetup{						
+	colorlinks,
+	linkcolor={blue!90!black},
+	citecolor={blue!90!black},
+	urlcolor={blue!90!black}
+	}																							% sets color of hypertext links
+	
+%set fonts and font formats
+\usepackage{fontspec}															% permits use of system fonts when compiled using XeLaTeX
+\usepackage[raggedright]{titlesec}											% allows ragged text on right margin where necessary	 (eg in TOC)
+%\setsansfont{}
+%\setmainfont{}
+%\setmonofont{}
+\defaultfontfeatures{Ligatures=TeX}
+
+
+%TOC typesetting
+%set heading formats
+\titleformat{\chapter}[display]
+  {\bfseries\Large\sffamily\raggedright}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}}
+  [\vspace{1ex}\titlerule]
+\titleformat*{\section}{\singlespacing\Large\bfseries\sffamily\raggedright}
+\titleformat*{\subsection}{\singlespacing\large\bfseries\sffamily\raggedright}
+\titleformat*{\subsubsection}{\singlespacing\bfseries\sffamily\raggedright}
+
+% typesetting of chapter quotes 
+\newcommand{\chapterquote}[2]{\vspace{8cm}  \begin{flushright} \begingroup\singlespacing #1 \vspace{5mm} 
+\\\textit{---#2}
+\endgroup
+\end{flushright}
+\newpage \blankpage}
+
+	
+\title{Title}
+\author{Author}
+\date{Day Month Year}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\input{titlepage}
+
+\thispagestyle{empty}
+\cleardoublepage
+\thispagestyle{empty}
+
+\null\vspace{\fill}
+\begingroup\singlespacing
+\begin{flushright}
+\textit{Dedication}\\
+\end{flushright}
+\endgroup
+\vspace{\fill|}
+
+\pagebreak
+\pagestyle{plain}
+\section*{Copyright Statement}
+
+
+
+\section*{Contributions}
+
+
+\newpage\null\thispagestyle{empty}\newpage
+\newpage\null\thispagestyle{empty}\newpage
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\subfile{preamble/abstract/english}
+
+\chapter*{R\'{e}sum\'{e}}
+\addcontentsline{toc}{chapter}{R\'{e}sum\'{e}}
+\subfile{preamble/abstract/french}
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\tableofcontents
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listofschemes
+\addcontentsline{toc}{chapter}{List of Schemes}
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\chapter*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\subfile{preamble/listofabbreviations/abbrevs.tex}
+
+\cleardoublepage\pagenumbering{arabic}
+
+\pagestyle{fancy} 
+
+\chapter{Introduction}
+\subfile{chapter1/chapter1.tex}
+
+\chapter{Chapter TItle}
+\subfile{chapter2/chapter2.tex}
+
+\chapter{Chapter Title}
+\subfile{chapter3/chapter3.tex}
+
+\chapter{Chapter Title}
+\subfile{chapter4/chapter4.tex}
+
+\chapter{Chapter Title} 
+\subfile{chapter5/chapter5.tex}
+
+\chapter{Conclusions}
+\subfile{chapter6/chapter6.tex}
+
+\printbibliography[title={References}, heading=bibintoc]
+
+\appendix
+\chapter{Appendix}
+\subfile{appendix/appendix.tex}
+
+\end{document}
+
+
+
+
+
+

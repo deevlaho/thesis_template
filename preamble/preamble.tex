@@ -1,0 +1,127 @@
+\documentclass[12pt,letterpaper,twoside,openright]{report}
+\raggedbottom
+
+\title{Synthesis and Biological Properties of Oligonucleotides Containing Phosphoramidate-Modified Internucleotide Linkages}
+\author{Danielle Vlaho}
+\date{Day Month Year}
+
+%general commands
+\usepackage{graphicx}
+\graphicspath{{/Users/sweetdee/Documents/Latex/dvlaho_thesis/images/}}
+\usepackage[width=.9\textwidth]{caption}
+\usepackage{subcaption}
+%\caption*{\small Legend: dna; RNA; \F{2'-F-RNA}; \M{2'-OMe-RNA}; \f{2-F-ANA}; \m{5-Me-dC}; -- = phosphodiester linkage; * = phosphorothioate linkage; \pn  = DMEDA phosphoramidate linkage}
+\usepackage[width=150mm,top=25mm,bottom=25mm, bindingoffset=6mm, headheight=15pt]{geometry}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+\usepackage{gensymb}
+\usepackage{mhchem}
+\usepackage{chemscheme}
+\usepackage{siunitx}
+
+%define commands for special characters
+\newcommand{\Tm}{\textit{T}\textsubscript{m} }
+\newcommand{\pKa}{p\textit{K}\textsubscript{a} }
+\newcommand{\pnmr}{\textsuperscript{31}P NMR }
+\newcommand{\hnmr}{\textsuperscript{1}H NMR }
+\newcommand{\cnmr}{\textsuperscript{13}C NMR }
+\newcommand{\fnmr}{\textsuperscript{19}F NMR }
+\newcommand{\hshift}{$\delta$\textsubscript{H} }
+\newcommand{\cshift}{$\delta$\textsubscript{C} }
+\newcommand{\pshift}{$\delta$\textsubscript{P} }
+\newcommand{\rf}{R\textsubscript{f} }
+
+%define special packages for tables and other components
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage{datetime}
+
+%define font colours
+\usepackage{xcolor}
+\definecolor{darkestblue}{HTML}{0336AC}
+\definecolor{darkblue}{HTML}{1257F3}
+\definecolor{midblue}{HTML}{1296F3}
+\definecolor{lightblue}{HTML}{12DEF3}
+\definecolor{darkorange}{HTML}{E54607}
+\definecolor{midorange}{HTML}{F36C12}
+\definecolor{lightorange}{HTML}{F39912}
+\definecolor{yellow}{HTML}{F3C912}
+\definecolor{violet}{HTML}{CB12F3}
+\definecolor{limegreen}{HTML}{00FF00}
+\definecolor{midgreen}{HTML}{09D23D}
+\definecolor{hotpink}{HTML}{EF3294}
+\newcommand{\f}[1]{\textcolor{midgreen}{\textbf{#1}}}
+\newcommand{\F}[1]{\textcolor{midblue}{\textbf{#1}}}
+\newcommand{\M}[1]{\textcolor{midorange}{\textbf{#1}}}
+\newcommand{\m}[1]{\textcolor{hotpink}{\textbf{#1}}}
+\newcommand{\pn}{\textbf{+}}
+\newcommand{\refhere}{\textcolor{hotpink}{\textbf{[NEED REF] }}}
+\newcommand{\figref}{\textcolor{midorange}{\textbf{[NEED FIG] }}}
+\newcommand{\more}{\textcolor{limegreen}{\textbf{[NEED MORE TEXT HERE] }}}
+\newcommand{\note}[1]{\textcolor{violet}{\textbf{[NOTE:\phantom{0}{#1}]}}}
+
+%set page styles
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{Section \thesection}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,RE]{Chapter \thechapter}
+\fancyfoot[CO,CE]{D. Vlaho}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{afterpage}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \newpage}
+\usepackage{setspace}   
+\usepackage{lipsum}
+\linespread{1.5}
+%\setlength{\parskip}{1em}
+
+%import bibliography, subfiles, links
+\usepackage[style=chem-acs, autocite=superscript, backend=bibtex]{biblatex}
+\bibliography{/Users/sweetdee/Documents/LaTeX/dvlaho_thesis/bibliography.bib}
+\AtEveryBibitem{\clearfield{month}}
+%\usepackage{commands}
+\usepackage{hyperref}
+\usepackage{subfiles}
+\makeatletter
+\makeatother
+\hypersetup{
+	colorlinks,
+	linkcolor={purple!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+	}
+	
+%set font formats
+\usepackage{fontspec}
+\usepackage[raggedright]{titlesec}
+\setsansfont{Didot}
+\setmainfont{Avenir Book}
+\defaultfontfeatures{Ligatures=TeX}
+
+%set heading formats
+\titleformat{\chapter}[display]
+  {\bfseries\Large\sffamily\raggedright}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}}
+  [\vspace{1ex}\titlerule]
+\titleformat*{\section}{\singlespacing\Large\bfseries\sffamily\raggedright}
+\titleformat*{\subsection}{\singlespacing\large\bfseries\sffamily\raggedright}
+\titleformat*{\subsubsection}{\singlespacing\bfseries\sffamily\raggedright}
+\newcommand{\chapterquote}[2]{\vspace{8cm}  \begin{flushright} \begingroup\singlespacing #1 \vspace{5mm} 
+\\\textit{---#2}
+\endgroup
+\end{flushright}
+\newpage \blankpage}
+
+	
+\title{Synthesis and Biological Properties of Oligonucleotides Containing Modified Internucleotide Linkages}
+\author{Danielle Vlaho}
+\date{Day Month Year}
